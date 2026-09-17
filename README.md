@@ -1,14 +1,13 @@
-# 🚀 [Project Name - e.g., TaskSphere API]
+# 🚀 [Project Name -  Crud API]
 
 A robust **RESTful CRUD API** built to manage [Project Purpose - e.g., daily tasks, library books, or e-commerce products]. This project is designed with a clean architecture, featuring structural validation, comprehensive error handling, and secure data persistence.
 
 ## 🛠️ Tech Stack
 
-- **Backend Framework:** [e.g., Node.js with Express / Python with FastAPI / Java Spring Boot]
-- **Database:** [e.g., MongoDB / PostgreSQL / MySQL]
-- **ORM/ODM:** [e.g., Mongoose / Prisma / Sequelize / SQLAlchemy]
-- **Authentication:** [e.g., JWT (JSON Web Tokens) / None]
-- **Testing Tools:** [e.g., Jest / PyTest / Postman]
+- **Backend Framework:** Python with fastapi 
+- **Database:** MongoDB  PostgreSQL 
+- **Authentication:** JWT (JSON Web Tokens) 
+- **Testing Tools:**  PyTest , Postman
 
 ## ✨ Key Features
 

@@ -1,9 +1,3 @@
-"""
-Task API — a small CRUD API for managing a to-do list.
-Run: uvicorn main:app --reload --port 8000
-Docs (Swagger UI): http://localhost:8000/docs
-"""
-
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List
@@ -14,17 +8,14 @@ app = FastAPI(
     description="A simple in-memory CRUD API for managing tasks.",
 )
 
-# ---------- In-memory "database" ----------
 
 tasks: List[dict] = [
     {"id": 1, "title": "Buy milk", "done": False},
     {"id": 2, "title": "Read a book", "done": False},
     {"id": 3, "title": "Clean the house", "done": True},
 ]
-next_id = 4  # tracks the next free id
+next_id = 4
 
-
-# ---------- Request/response models ----------
 
 class TaskCreate(BaseModel):
     title: str
@@ -35,7 +26,6 @@ class TaskUpdate(BaseModel):
     done: Optional[bool] = None
 
 
-# ---------- Stage 1: root + health ----------
 
 @app.get("/", summary="API info")
 def root():
@@ -48,8 +38,6 @@ def health():
     """Simple liveness check."""
     return {"status": "ok"}
 
-
-# ---------- Stage 2: Read ----------
 
 @app.get("/tasks", summary="List all tasks")
 def get_tasks():
@@ -66,7 +54,6 @@ def get_task(task_id: int):
     raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
 
 
-# ---------- Stage 3: Create ----------
 
 @app.post("/tasks", status_code=201, summary="Create a task")
 def create_task(new_task: TaskCreate):
@@ -82,7 +69,6 @@ def create_task(new_task: TaskCreate):
     return task
 
 
-# ---------- Stage 4: Update & Delete ----------
 
 @app.put("/tasks/{task_id}", summary="Update a task")
 def update_task(task_id: int, update: TaskUpdate):
@@ -113,8 +99,6 @@ def delete_task(task_id: int):
             return
     raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
 
-
-# ---------- Bonus: extras ----------
 
 @app.get("/stats", summary="Task stats")
 def get_stats():
